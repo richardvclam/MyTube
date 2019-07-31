@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import { AllHtmlEntities } from 'html-entities';
 import cheerio from 'cheerio-without-node-native';
+// import Orientation from 'react-native-orientation';
+import Orientation from 'react-native-orientation-locker';
 
 type Props = {};
 
@@ -36,6 +38,7 @@ export default class Home extends Component<Props> {
   };
 
   componentDidMount() {
+    Orientation.lockToPortrait();
     this.fetchVideos();
   }
 
@@ -132,6 +135,7 @@ export default class Home extends Component<Props> {
           <View
             style={{
               padding: 15,
+              paddingBottom: 25,
               backgroundColor: 'white'
             }}
           >
