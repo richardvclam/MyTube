@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
+  Image,
   SafeAreaView,
   StatusBar,
   Text,
@@ -27,13 +28,15 @@ export default class VideoScreen extends Component {
   componentDidMount() {
     const video = this.props.navigation.getParam('video');
 
-    getFullInfo(video.id, {}, (err, info) => {
+    getFullInfo(video.id, { quality: 'lowest' }, (err, info) => {
       if (err) {
         console.warn(err);
         return;
       }
 
-      const format = util.chooseFormat(info.formats, {});
+      const format = util.chooseFormat(info.formats, { quality: '22' });
+
+      console.log('format', format);
 
       console.log('info', info);
 
@@ -54,36 +57,31 @@ export default class VideoScreen extends Component {
         <StatusBar hidden={true} />
         <SafeAreaView style={{ backgroundColor: 'white' }}>
           <View style={{ position: 'relative' }}>
-            {videoUrl ? (
-              <Video
-                bufferConfig={{
-                  minBufferMs: 5000,
-                  bufferForPlaybackMs: 1000,
-                  bufferForPlaybackAfterRebufferMs: 2500
-                }}
-                controls={true}
-                fullscreenAutorotate={true}
-                fullscreenOrientation="landscape"
-                // source={{ uri: `https://www.youtube.com/embed/${video.id.videoId}` }}
-
-                playInBackground={true}
-                onLoad={() => this.setState({ ready: true })}
-                source={{
-                  uri: this.state.videoUrl
-                }}
-                style={{ width, height: 300, backgroundColor: 'black' }}
-              />
-            ) : (
-              <View
-                style={{
-                  width,
-                  height: 300,
-                  backgroundColor: 'black',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              ></View>
-            )}
+            <Video
+              bufferConfig={{
+                minBufferMs: 5000,
+                bufferForPlaybackMs: 1000,
+                bufferForPlaybackAfterRebufferMs: 2500
+              }}
+              controls={true}
+              fullscreenAutorotate={true}
+              fullscreenOrientation="landscape"
+              ignoreSilentSwitch="ignore"
+              muted={false}
+              playInBackground={true}
+              poster={video.thumbnail}
+              onLoad={payload => {
+                this.setState({ ready: true });
+                console.log('loaded', payload);
+              }}
+              onError={err => {
+                console.warn('videoerror', err);
+              }}
+              source={{
+                uri: this.state.videoUrl
+              }}
+              style={{ width, height: 300, backgroundColor: 'black' }}
+            />
             {!ready && (
               <ActivityIndicator
                 style={{

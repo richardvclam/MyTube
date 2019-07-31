@@ -11,10 +11,8 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
-  View,
-  ActivityIndicator
+  View
 } from 'react-native';
-import axios from 'axios';
 import { AllHtmlEntities } from 'html-entities';
 import cheerio from 'cheerio-without-node-native';
 

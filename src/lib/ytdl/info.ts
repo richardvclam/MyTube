@@ -242,22 +242,29 @@ export const getFullInfo = (id, options, callback) => {
 
     if (info.formats.length || hasManifest) {
       const html5playerfile = urllib.resolve(VIDEO_URL, info.html5player);
+
       try {
         const tokens = await sig.getTokens(html5playerfile, options);
 
         sig.decipherFormats(info.formats, tokens, options.debug);
 
         let funcs = [];
-        let dash;
-        let m3u8;
+
         if (hasManifest && info.player_response.streamingData.dashManifestUrl) {
           let url = info.player_response.streamingData.dashManifestUrl;
-          dash = await getDashManifest(url, options);
+          funcs.push(getDashManifest(url, options));
+        } else {
+          funcs.push(null);
         }
+
         if (hasManifest && info.player_response.streamingData.hlsManifestUrl) {
           let url = info.player_response.streamingData.hlsManifestUrl;
-          m3u8 = await getM3U8(url, options);
+          funcs.push(getM3U8(url, options));
+        } else {
+          funcs.push(null);
         }
+
+        const [dash, m3u8] = await Promise.all(funcs);
 
         if (dash) {
           mergeFormats(info, dash);
@@ -279,30 +286,6 @@ export const getFullInfo = (id, options, callback) => {
         info.formats.sort(sortFormats);
         info.full = true;
         callback(null, info);
-
-        // parallel(funcs, (err, results) => {
-        //   if (err) return callback(err);
-        //   if (results[0]) {
-        //     mergeFormats(info, results[0]);
-        //   }
-        //   if (results[1]) {
-        //     mergeFormats(info, results[1]);
-        //   }
-
-        //   if (options.debug) {
-        //     info.formats.forEach(format => {
-        //       const itag = format.itag;
-        //       if (!FORMATS[itag]) {
-        //         console.warn(`No format metadata for itag ${itag} found`);
-        //       }
-        //     });
-        //   }
-
-        //   info.formats.forEach(addFormatMeta);
-        //   info.formats.sort(sortFormats);
-        //   info.full = true;
-        //   callback(null, info);
-        // });
       } catch (err) {
         return callback(err);
       }
