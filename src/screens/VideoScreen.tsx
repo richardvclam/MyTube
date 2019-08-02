@@ -10,7 +10,6 @@ import {
   ScrollView,
   Text,
   View,
-  StyleSheet,
   TouchableWithoutFeedback
 } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
@@ -20,14 +19,11 @@ import Orientation from 'react-native-orientation-locker';
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
 import { AllHtmlEntities } from 'html-entities';
 import Animated from 'react-native-reanimated';
-// import fetchComments from 'youtube-comment-api';
-import axios from 'axios';
 
 import Comments from '../components/Comments';
 
 import { getFullInfo } from '../lib/ytdl/info';
 import * as util from '../lib/ytdl/util';
-import config from '../config';
 
 const { width } = Dimensions.get('window');
 

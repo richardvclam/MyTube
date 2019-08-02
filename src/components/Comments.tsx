@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import axios from 'axios';
-import config from '../config';
+import Config from 'react-native-config';
 import Comment from './Comment';
 
 type Props = {
@@ -25,7 +25,7 @@ export default class Comments extends Component<Props> {
 
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/commentThreads?key=${config.apiKey}&part=snippet&videoId=${videoId}&maxResults=50`
+        `https://www.googleapis.com/youtube/v3/commentThreads?key=${Config.API_KEY}&part=snippet&videoId=${videoId}&maxResults=50`
       )
       .then(res => {
         console.log('fetched comments');
