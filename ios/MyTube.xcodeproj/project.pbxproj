@@ -23,10 +23,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		50DF0FBCB1B64FCAB077458C /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A15859C4F47E892907462 /* libRCTOrientation.a */; };
 		664F83386DE643ABAD7AD14C /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A210D1DCF0484893300FDC /* libRCTVideo.a */; };
 		6FB7DD7871D64AE6BAAEE4C3 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2444416E86504BE3A4E7142C /* libRNGestureHandler.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A523D2CF9A924F229CCBB076 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A92E0E9DC7094DECA5AD8D79 /* libRCTOrientation.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		E47EE1504A5F411EA64F8989 /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB50781605F448078C946D63 /* libRNReanimated.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -334,16 +334,16 @@
 			remoteGlobalIDString = 641E28441F0EEC8500443AF6;
 			remoteInfo = "RCTVideo-tvOS";
 		};
-		A0DABCD022F2102F00964C51 /* PBXContainerItemProxy */ = {
+		A0DABD7422F2673700964C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AFF2FF1DCFE04D42AAD222B4 /* RCTOrientation.xcodeproj */;
+			containerPortal = 21AD3386B63A4638874F423C /* RCTOrientation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTOrientation;
 		};
-		A0DABCD222F2102F00964C51 /* PBXContainerItemProxy */ = {
+		A0DABD7622F2673700964C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = AFF2FF1DCFE04D42AAD222B4 /* RCTOrientation.xcodeproj */;
+			containerPortal = 21AD3386B63A4638874F423C /* RCTOrientation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B59029A92237E1A400A9DA7D;
 			remoteInfo = "RCTOrientation-tvOS";
@@ -367,7 +367,6 @@
 		00E356EE1AD99517003FC87E /* MyTubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MyTubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTubeTests.m; sourceTree = "<group>"; };
-		035A15859C4F47E892907462 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MyTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,6 +378,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyTube/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1D5B4AC4DC384568AF884A1F /* RNReanimated.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReanimated.xcodeproj; path = "../node_modules/react-native-reanimated/ios/RNReanimated.xcodeproj"; sourceTree = "<group>"; };
+		21AD3386B63A4638874F423C /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation-locker/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		2444416E86504BE3A4E7142C /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2BA32F977648D9A5B37859 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
@@ -388,8 +388,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9F7B93C09DD6479497E0D9F4 /* libRCTOrientation-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRCTOrientation-tvOS.a"; sourceTree = "<group>"; };
+		A92E0E9DC7094DECA5AD8D79 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		AFF2FF1DCFE04D42AAD222B4 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation-locker/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		D50E267A5A6148BC996CF483 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		DB50781605F448078C946D63 /* libRNReanimated.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReanimated.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -426,7 +426,7 @@
 				E47EE1504A5F411EA64F8989 /* libRNReanimated.a in Frameworks */,
 				6FB7DD7871D64AE6BAAEE4C3 /* libRNGestureHandler.a in Frameworks */,
 				664F83386DE643ABAD7AD14C /* libRCTVideo.a in Frameworks */,
-				50DF0FBCB1B64FCAB077458C /* libRCTOrientation.a in Frameworks */,
+				A523D2CF9A924F229CCBB076 /* libRCTOrientation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +595,7 @@
 				1D5B4AC4DC384568AF884A1F /* RNReanimated.xcodeproj */,
 				D50E267A5A6148BC996CF483 /* RNGestureHandler.xcodeproj */,
 				4B7802A9CD574BDAAEFFBEC3 /* RCTVideo.xcodeproj */,
-				AFF2FF1DCFE04D42AAD222B4 /* RCTOrientation.xcodeproj */,
+				21AD3386B63A4638874F423C /* RCTOrientation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -641,8 +641,8 @@
 				EE10CF33269B4CD8AD1422E1 /* libRNReanimated-tvOS.a */,
 				3D2BA32F977648D9A5B37859 /* libRNGestureHandler-tvOS.a */,
 				65A210D1DCF0484893300FDC /* libRCTVideo.a */,
-				035A15859C4F47E892907462 /* libRCTOrientation.a */,
 				9F7B93C09DD6479497E0D9F4 /* libRCTOrientation-tvOS.a */,
+				A92E0E9DC7094DECA5AD8D79 /* libRCTOrientation.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -674,11 +674,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A0DABCCC22F2102F00964C51 /* Products */ = {
+		A0DABD7022F2673700964C51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0DABCD122F2102F00964C51 /* libRCTOrientation.a */,
-				A0DABCD322F2102F00964C51 /* libRCTOrientation-tvOS.a */,
+				A0DABD7522F2673700964C51 /* libRCTOrientation.a */,
+				A0DABD7722F2673700964C51 /* libRCTOrientation-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -790,8 +790,8 @@
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
 				},
 				{
-					ProductGroup = A0DABCCC22F2102F00964C51 /* Products */;
-					ProjectRef = AFF2FF1DCFE04D42AAD222B4 /* RCTOrientation.xcodeproj */;
+					ProductGroup = A0DABD7022F2673700964C51 /* Products */;
+					ProjectRef = 21AD3386B63A4638874F423C /* RCTOrientation.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1129,18 +1129,18 @@
 			remoteRef = A0DABC4222F12ED400964C51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A0DABCD122F2102F00964C51 /* libRCTOrientation.a */ = {
+		A0DABD7522F2673700964C51 /* libRCTOrientation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTOrientation.a;
-			remoteRef = A0DABCD022F2102F00964C51 /* PBXContainerItemProxy */;
+			remoteRef = A0DABD7422F2673700964C51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A0DABCD322F2102F00964C51 /* libRCTOrientation-tvOS.a */ = {
+		A0DABD7722F2673700964C51 /* libRCTOrientation-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTOrientation-tvOS.a";
-			remoteRef = A0DABCD222F2102F00964C51 /* PBXContainerItemProxy */;
+			remoteRef = A0DABD7622F2673700964C51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -1243,13 +1243,13 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
+					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = MyTubeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1273,13 +1273,13 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
+					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = MyTubeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1304,6 +1304,7 @@
 					"$(SRCROOT)/../node_modules/react-native-reanimated/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = MyTube/Info.plist;
@@ -1330,6 +1331,7 @@
 					"$(SRCROOT)/../node_modules/react-native-reanimated/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 					"$(SRCROOT)/../node_modules/react-native-orientation-locker/iOS/RCTOrientation",
 				);
 				INFOPLIST_FILE = MyTube/Info.plist;

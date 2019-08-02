@@ -5,13 +5,15 @@
  * @format
  */
 
+// const nodelibs = require('node-libs-react-native');
+
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
-      },
-    }),
-  },
+        inlineRequires: false
+      }
+    })
+  }
 };

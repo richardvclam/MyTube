@@ -2,25 +2,42 @@ import React, { Component, Fragment } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
+  FlatList,
   Image,
+  Keyboard,
   SafeAreaView,
   StatusBar,
   ScrollView,
   Text,
-  View
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback
 } from 'react-native';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import Video from 'react-native-video';
-import { AllHtmlEntities } from 'html-entities';
 import { isIphoneX } from 'react-native-iphone-x-helper';
-import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
-// import Orientation, { orientation } from 'react-native-orientation';
 import Orientation from 'react-native-orientation-locker';
+import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
+import { AllHtmlEntities } from 'html-entities';
+import Animated from 'react-native-reanimated';
+// import fetchComments from 'youtube-comment-api';
+import axios from 'axios';
+
+import Comments from '../components/Comments';
+
 import { getFullInfo } from '../lib/ytdl/info';
 import * as util from '../lib/ytdl/util';
+import config from '../config';
 
 const { width } = Dimensions.get('window');
 
-export default class VideoScreen extends Component {
+type Navigation = NavigationScreenProp<NavigationState>;
+
+type Props = {
+  navigation: Navigation;
+};
+
+export default class VideoScreen extends Component<Props> {
   static navigationOptions = {
     header: null
   };
@@ -31,12 +48,16 @@ export default class VideoScreen extends Component {
       { key: 'upNext', title: 'Up Next' },
       { key: 'comments', title: 'Comments' }
     ],
+    keyboardDismissMode: 'auto',
+    comments: [],
     ready: false,
     videoInfo: {},
     videoUrl: ''
   };
 
-  video: Video | null;
+  position = new Animated.Value(0);
+
+  video: Video | null = null;
 
   componentDidMount() {
     const video = this.props.navigation.getParam('video');
@@ -67,26 +88,37 @@ export default class VideoScreen extends Component {
   }
 
   handleOrientationChange = orientation => {
-    console.log('changed', orientation);
+    console.log('Changed orientation', orientation);
     if (orientation === 'LANDSCAPE-LEFT' || orientation === 'LANDSCAPE-RIGHT') {
-      // setTimeout(() => {
-      this.video.presentFullscreenPlayer();
-      // }, 2000);
+      this.video!.presentFullscreenPlayer();
     } else {
-      this.video.dismissFullscreenPlayer();
+      this.video!.dismissFullscreenPlayer();
     }
   };
 
-  renderTabBar = props => (
-    <TabBar
-      {...props}
-      style={{ backgroundColor: 'white' }}
-      // labelStyle={{ color: '#141414' }}
-      indicatorStyle={{ backgroundColor: '#141414' }}
-      activeColor="#141414"
-      inactiveColor="#bbbbbb"
-    />
-  );
+  private handleIndexChange = (index: number) => this.setState({ index });
+
+  private jumpTo = (key: string) => {
+    const navigationState = this.state;
+    const { keyboardDismissMode } = this.state;
+
+    const index = navigationState.routes.findIndex(route => route.key === key);
+
+    // // A tab switch might occur when we're in the middle of a transition
+    // // In that case, the index might be same as before
+    // // So we conditionally make the pager to update the position
+    // if (navigationState.index === index) {
+    //   this.jumpToIndex(index);
+    // } else {
+    this.handleIndexChange(index);
+
+    // When the index changes, the focused input will no longer be in current tab
+    // So we should dismiss the keyboard
+    if (keyboardDismissMode === 'auto') {
+      Keyboard.dismiss();
+    }
+    // }
+  };
 
   renderUpNext = () => {
     const { videoInfo } = this.state;
@@ -98,31 +130,42 @@ export default class VideoScreen extends Component {
           if (!relatedVideo.title) return null;
 
           return (
-            <View
+            <TouchableWithoutFeedback
               key={relatedVideo.id}
-              style={{ flexDirection: 'row', marginBottom: 15 }}
+              onPress={() => {
+                this.props.navigation.popToTop();
+                this.props.navigation.navigate('Video', {
+                  id: relatedVideo.id,
+                  video: {
+                    id: relatedVideo.id,
+                    title: relatedVideo.title,
+                    thumbnail: relatedVideo.iurlhq,
+                    views: relatedVideo.short_view_count_text,
+                    author: relatedVideo.author
+                  }
+                });
+              }}
+              style={{ marginBottom: 15 }}
             >
-              <Image
-                source={{ uri: relatedVideo.iurlmq }}
-                resizeMode="contain"
-                style={{ width: 120, height: 75, marginRight: 15 }}
-              />
-              <View style={{ flex: 1 }}>
-                <Text>{relatedVideo.title}</Text>
-                <Text>{relatedVideo.author}</Text>
-                <Text>{relatedVideo.short_view_count_text}</Text>
+              <View style={{ flexDirection: 'row', marginBottom: 15 }}>
+                <Image
+                  source={{ uri: relatedVideo.iurlmq }}
+                  resizeMode="contain"
+                  style={{ width: 120, height: 75, marginRight: 15 }}
+                />
+                <View style={{ flex: 1 }}>
+                  <Text style={{ color: '#141414' }}>{relatedVideo.title}</Text>
+                  <Text style={{ color: '#5e5e5e', fontSize: 14 }}>
+                    {relatedVideo.author}
+                  </Text>
+                  <Text style={{ color: '#5e5e5e', fontSize: 14 }}>
+                    {relatedVideo.short_view_count_text}
+                  </Text>
+                </View>
               </View>
-            </View>
+            </TouchableWithoutFeedback>
           );
         })}
-      </View>
-    );
-  };
-
-  renderComments = () => {
-    return (
-      <View style={{ padding: 15, marginBottom: 200 }}>
-        <Text>Some comments</Text>
       </View>
     );
   };
@@ -160,7 +203,6 @@ export default class VideoScreen extends Component {
               muted={false}
               playInBackground={true}
               poster={video.thumbnail}
-              // onFullscreenPlayerWillDismiss={}
               onLoad={payload => {
                 this.setState({ ready: true });
                 console.log('loaded', payload);
@@ -191,20 +233,22 @@ export default class VideoScreen extends Component {
           </View>
 
           {/* Body */}
-          <ScrollView>
+          <ScrollView stickyHeaderIndices={[2]}>
             {/* Header */}
             <View style={{ padding: 15 }}>
               <Text style={{ fontSize: 17, color: '#141414', marginBottom: 5 }}>
                 {title}{' '}
               </Text>
               <Text style={{ fontSize: 14, color: '#5e5e5e' }}>
-                {video.views}
+                {video.views} &middot; {video.days}
               </Text>
             </View>
 
+            {/* Author */}
             {videoUrl ? (
               <View
                 style={{
+                  // backgroundColor: 'white',
                   borderColor: '#dddddd',
                   borderTopWidth: 1,
                   borderBottomWidth: 1,
@@ -234,16 +278,41 @@ export default class VideoScreen extends Component {
             ) : null}
 
             {videoUrl ? (
+              <View>
+                <TabBar
+                  position={this.position}
+                  jumpTo={this.jumpTo}
+                  // tabStyle={{ backgroundColor: 'white' }}
+                  style={{ backgroundColor: 'white' }}
+                  navigationState={this.state}
+                  indicatorStyle={{ backgroundColor: '#141414' }}
+                  // indicatorContainerStyle={{ backgroundColor: '#141414' }}
+                  activeColor="#141414"
+                  inactiveColor="#bbbbbb"
+                />
+              </View>
+            ) : null}
+
+            {videoUrl ? (
               <Fragment>
                 <TabView
+                  lazy
+                  removeClippedSubviews={true}
+                  position={this.position}
                   navigationState={this.state}
-                  renderScene={SceneMap({
-                    upNext: this.renderUpNext,
-                    comments: this.renderComments
-                  })}
-                  onIndexChange={index => this.setState({ index })}
+                  renderScene={({ route }) => {
+                    switch (route.key) {
+                      case 'upNext':
+                        return this.renderUpNext();
+                      case 'comments':
+                        return <Comments videoId={video.id} />;
+                      default:
+                        return null;
+                    }
+                  }}
+                  onIndexChange={this.handleIndexChange}
                   initialLayout={{ width }}
-                  renderTabBar={this.renderTabBar}
+                  renderTabBar={() => null}
                 />
               </Fragment>
             ) : null}

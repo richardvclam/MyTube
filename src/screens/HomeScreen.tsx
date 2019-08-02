@@ -1,28 +1,33 @@
-/**
- * @format
- */
-
 import React, { Component, Fragment } from 'react';
 import {
   Dimensions,
   FlatList,
   Image,
   StatusBar,
-  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View
 } from 'react-native';
-import { AllHtmlEntities } from 'html-entities';
-import cheerio from 'cheerio-without-node-native';
-// import Orientation from 'react-native-orientation';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import Orientation from 'react-native-orientation-locker';
+import cheerio from 'cheerio-without-node-native';
+import { AllHtmlEntities } from 'html-entities';
+import { IVideo } from '../types/IVideo';
 
-type Props = {};
+type Navigation = NavigationScreenProp<NavigationState>;
+
+type Props = {
+  navigation: Navigation;
+};
+
+type State = {
+  refreshing: boolean;
+  videos: IVideo[];
+};
 
 const { width } = Dimensions.get('window');
 
-export default class Home extends Component<Props> {
+export default class HomeScreen extends Component<Props, State> {
   static navigationOptions = {
     headerLeft: () => (
       <Image
@@ -32,6 +37,7 @@ export default class Home extends Component<Props> {
       />
     )
   };
+
   state = {
     refreshing: false,
     videos: []
@@ -46,11 +52,14 @@ export default class Home extends Component<Props> {
     const url = 'https://www.youtube.com';
     const res = await fetch(url);
     const htmlString = await res.text();
+    console.log(htmlString);
     const $ = cheerio.load(htmlString);
 
     const ytShelfGridItem = $('li.yt-shelf-grid-item');
 
-    const data = ytShelfGridItem.map((_, li) => {
+    const videos: IVideo[] = [];
+
+    ytShelfGridItem.each((i, li) => {
       const ytLockupContent = $('.yt-lockup-content', li);
 
       const link = ytLockupContent.find('.yt-lockup-title a');
@@ -83,7 +92,7 @@ export default class Home extends Component<Props> {
 
       const thumbnail = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
-      return {
+      videos.push({
         id,
         href,
         title,
@@ -91,15 +100,17 @@ export default class Home extends Component<Props> {
         user,
         views,
         days
-      };
+      });
+
+      // this.setState({ videos });
     });
 
-    this.setState({ refreshing: false, videos: data });
+    this.setState({ refreshing: false, videos });
   };
 
-  keyExtractor = item => item.id;
+  keyExtractor = (item: IVideo) => item.id;
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item }: { item: IVideo }) => {
     const thumbnailWidth = width;
     const thumbnailHeight = (360 / 480) * width;
 
@@ -107,17 +118,15 @@ export default class Home extends Component<Props> {
 
     return (
       <TouchableWithoutFeedback
-        key={item.id.videoId}
+        key={item.id}
         onPress={() => {
           console.log('navigate to video');
-          this.props.navigation.navigate('Video', { video: item });
+          this.props.navigation.navigate('Video', { id: item.id, video: item });
         }}
       >
         <View>
           <View
             style={{
-              // height: 270,
-              // position: 'relative',
               backgroundColor: '#f4f4f4'
             }}
           >
@@ -125,8 +134,6 @@ export default class Home extends Component<Props> {
               source={{ uri: item.thumbnail }}
               resizeMode="contain"
               style={{
-                //   position: 'absolute',
-                //   top: -45,
                 height: thumbnailHeight,
                 width: thumbnailWidth
               }}
@@ -152,8 +159,6 @@ export default class Home extends Component<Props> {
   render() {
     const { refreshing, videos } = this.state;
 
-    console.log('videos', videos);
-
     return (
       <Fragment>
         <StatusBar barStyle="dark-content" hidden={false} />
@@ -172,22 +177,3 @@ export default class Home extends Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});
