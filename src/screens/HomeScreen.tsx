@@ -68,7 +68,7 @@ export default class HomeScreen extends Component<Props, State> {
       const id = href.split('?v=')[1];
 
       const bylineLink = ytLockupContent.find('.yt-lockup-byline a');
-      const user = bylineLink.text();
+      const author = bylineLink.text();
 
       const metadata = ytLockupContent.find('.yt-lockup-meta-info');
       const views =
@@ -84,20 +84,21 @@ export default class HomeScreen extends Component<Props, State> {
           ? metadata.children()[1].children[0].data
           : '';
 
-      //   const ytLockupThumbnail = $('.yt-lockup-thumbnail', li);
+      const ytLockupThumbnail = $('.yt-lockup-thumbnail', li);
 
-      //   const thumbnail =
-      //     ytLockupThumbnail.find('img').attr('data-thumb') ||
-      //     ytLockupThumbnail.find('img').attr('src');
+      const thumbnail =
+        ytLockupThumbnail.find('img').attr('data-thumb') ||
+        ytLockupThumbnail.find('img').attr('src');
+      // .replace('hqdefault', 'maxresdefault');
 
-      const thumbnail = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+      // const thumbnail = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
       videos.push({
         id,
         href,
         title,
         thumbnail,
-        user,
+        author,
         views,
         days
       });
@@ -112,7 +113,7 @@ export default class HomeScreen extends Component<Props, State> {
 
   renderItem = ({ item }: { item: IVideo }) => {
     const thumbnailWidth = width;
-    const thumbnailHeight = (360 / 480) * width;
+    const thumbnailHeight = (9 / 16) * width;
 
     const title = new AllHtmlEntities().decode(item.title);
 
@@ -142,13 +143,15 @@ export default class HomeScreen extends Component<Props, State> {
           <View
             style={{
               padding: 15,
-              paddingBottom: 25,
+              paddingBottom: 30,
               backgroundColor: 'white'
             }}
           >
             <Text style={{ fontSize: 17, color: '#141414' }}>{title}</Text>
             <Text style={{ fontSize: 14, color: '#5e5e5e' }}>
-              {item.user} &middot; {item.views} &middot; {item.days}
+              {[item.author, item.views, item.days]
+                .filter(i => !!i)
+                .join(` \u00b7 `)}
             </Text>
           </View>
         </View>
