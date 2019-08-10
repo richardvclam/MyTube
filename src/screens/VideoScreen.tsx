@@ -16,7 +16,7 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import Video from 'react-native-video';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 import Orientation from 'react-native-orientation-locker';
-import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
+import { TabBar, TabView } from 'react-native-tab-view';
 import { AllHtmlEntities } from 'html-entities';
 import Animated from 'react-native-reanimated';
 

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
 import { AllHtmlEntities } from 'html-entities';
 
-type Props = {
+interface CommentProps {
   author: string;
   profileImageUrl: string;
   text: string;
-};
+}
 
-export default class Comment extends Component<Props> {
+export default class Comment extends Component<CommentProps> {
   render() {
     const { author, profileImageUrl, text } = this.props;
 

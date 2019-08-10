@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with an author, profile image, and text 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "padding": 15,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://via.placeholder.com/150",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 23,
+        "height": 45,
+        "marginRight": 15,
+        "width": 45,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#5e5e5e",
+          "fontSize": 14,
+        }
+      }
+    >
+      John
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#141414",
+        }
+      }
+    >
+      Test comment
+    </Text>
+  </View>
+</View>
+`;
