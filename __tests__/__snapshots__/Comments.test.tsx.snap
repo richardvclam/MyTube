@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly with a valid video id 1`] = `
+exports[`renders correctly when API call resolves 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
   data={
@@ -219,7 +219,7 @@ exports[`renders correctly with a valid video id 1`] = `
 </RCTScrollView>
 `;
 
-exports[`renders throws error with invalid video id 1`] = `
+exports[`renders error when API call rejects 1`] = `
 <Text>
   An error occured.
 </Text>
