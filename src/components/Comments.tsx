@@ -25,7 +25,7 @@ interface State {
 export default class Comments extends Component<CommentsProps, State> {
   state = {
     comments: [],
-    fetching: true,
+    fetching: false,
     error: false
   };
 

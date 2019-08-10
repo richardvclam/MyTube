@@ -1,19 +1,226 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly with a valid video id 1`] = `
-<ActivityIndicator
-  animating={true}
-  color="#999999"
-  hidesWhenStopped={true}
-  size="small"
-/>
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  data={
+    Array [
+      Object {
+        "etag": "\\"nlUZBA6NbTS7q9G8D1GljyfTIWI/FfI14lmf_7AYl-KvSv9asCFclE0\\"",
+        "id": "UgxlamWPM5tOhUbv-qN4AaABAg",
+        "kind": "youtube#commentThread",
+        "snippet": Object {
+          "canReply": true,
+          "isPublic": true,
+          "topLevelComment": Object {
+            "etag": "\\"nlUZBA6NbTS7q9G8D1GljyfTIWI/cSG-EL85SG_wuYue4iU3AnImzMw\\"",
+            "id": "UgxlamWPM5tOhUbv-qN4AaABAg",
+            "kind": "youtube#comment",
+            "snippet": Object {
+              "authorChannelId": Object {
+                "value": "UCRavYw6DMXmuTL9o8B6i-Hw",
+              },
+              "authorChannelUrl": "http://www.youtube.com/channel/UCRavYw6DMXmuTL9o8B6i-Hw",
+              "authorDisplayName": "uh ahai",
+              "authorProfileImageUrl": "https://yt3.ggpht.com/-xaaY3HLegNE/AAAAAAAAAAI/AAAAAAAAAAA/5420vUHB2lc/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+              "canRate": true,
+              "likeCount": 0,
+              "publishedAt": "2019-08-10T06:12:07.000Z",
+              "textDisplay": "Frenchie was actually a squad leader in the second lebanon war",
+              "textOriginal": "Frenchie was actually a squad leader in the second lebanon war",
+              "updatedAt": "2019-08-10T06:12:07.000Z",
+              "videoId": "WZSuU1gdJTg",
+              "viewerRating": "none",
+            },
+          },
+          "totalReplyCount": 0,
+          "videoId": "WZSuU1gdJTg",
+        },
+      },
+      Object {
+        "etag": "\\"nlUZBA6NbTS7q9G8D1GljyfTIWI/UiVyaBY4Ec5muE0_dz76K0ZeEtY\\"",
+        "id": "UgyNTf-GNFaYcadqp-d4AaABAg",
+        "kind": "youtube#commentThread",
+        "snippet": Object {
+          "canReply": true,
+          "isPublic": true,
+          "topLevelComment": Object {
+            "etag": "\\"nlUZBA6NbTS7q9G8D1GljyfTIWI/QOY8NFTiOI5AENjqW0sCbBswu4k\\"",
+            "id": "UgyNTf-GNFaYcadqp-d4AaABAg",
+            "kind": "youtube#comment",
+            "snippet": Object {
+              "authorChannelId": Object {
+                "value": "UCvNfx9E6_-D2NcIhOAcvGig",
+              },
+              "authorChannelUrl": "http://www.youtube.com/channel/UCvNfx9E6_-D2NcIhOAcvGig",
+              "authorDisplayName": "Softy",
+              "authorProfileImageUrl": "https://yt3.ggpht.com/-d-eX7xohstw/AAAAAAAAAAI/AAAAAAAAAAA/bUfLsGiOvqQ/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+              "canRate": true,
+              "likeCount": 0,
+              "publishedAt": "2019-08-10T06:09:58.000Z",
+              "textDisplay": "two kiwi lead characters !!! go ants and karl !!",
+              "textOriginal": "two kiwi lead characters !!! go ants and karl !!",
+              "updatedAt": "2019-08-10T06:09:58.000Z",
+              "videoId": "WZSuU1gdJTg",
+              "viewerRating": "none",
+            },
+          },
+          "totalReplyCount": 0,
+          "videoId": "WZSuU1gdJTg",
+        },
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "padding": 15,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "https://yt3.ggpht.com/-xaaY3HLegNE/AAAAAAAAAAI/AAAAAAAAAAA/5420vUHB2lc/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+            }
+          }
+          style={
+            Object {
+              "borderRadius": 23,
+              "height": 45,
+              "marginRight": 15,
+              "width": 45,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#5e5e5e",
+                "fontSize": 14,
+              }
+            }
+          >
+            uh ahai
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#141414",
+              }
+            }
+          >
+            Frenchie was actually a squad leader in the second lebanon war
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "borderBottomWidth": 0.5,
+            "borderColor": "#bbbbbb",
+          }
+        }
+      />
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "padding": 15,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "https://yt3.ggpht.com/-d-eX7xohstw/AAAAAAAAAAI/AAAAAAAAAAA/bUfLsGiOvqQ/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+            }
+          }
+          style={
+            Object {
+              "borderRadius": 23,
+              "height": 45,
+              "marginRight": 15,
+              "width": 45,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#5e5e5e",
+                "fontSize": 14,
+              }
+            }
+          >
+            Softy
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#141414",
+              }
+            }
+          >
+            two kiwi lead characters !!! go ants and karl !!
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
 `;
 
 exports[`renders throws error with invalid video id 1`] = `
-<ActivityIndicator
-  animating={true}
-  color="#999999"
-  hidesWhenStopped={true}
-  size="small"
-/>
+<Text>
+  An error occured.
+</Text>
 `;
